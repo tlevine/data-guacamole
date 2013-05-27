@@ -1,14 +1,29 @@
 #!/usr/bin/env python2
 import os
+from urllib import urlencode
+from urllib2 import urlopen
 
-from lxml.etree import parse, XMLParser
+from lxml.etree import fromstring
 
 APIKEY = os.environ['SUPERMARKETAPI_APIKEY']
 
 def stores(state, city):
-    params = (APIKEY, state, city)
-    url = 'http://www.SupermarketAPI.com/api.asmx/StoresByCityState?APIKEY=%s&SelectedState=%s&SelectedCity=%s' % params
-    array_of_store = parse(url, XMLParser(dtd_validation=True))
+    'Get an array of stores for a given city.'
+    params = urlencode({
+        'APIKEY': APIKEY,
+        'SelectedState': state,
+        'SelectedCity': city,
+    })
+    url = 'http://www.SupermarketAPI.com/api.asmx/StoresByCityState?' + params
+    handle = urlopen(url)
+
+    # Remove the schema
+    text = handle.readline()
+    text += '<ArrayOfStore>\r\n'
+    handle.readline()
+    text += handle.read()
+
+    array_of_store = fromstring(text)
     return array_of_store
 
 '''
