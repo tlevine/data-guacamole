@@ -25,3 +25,13 @@ ingredients and their corresponding grades are listed below.
 * Teaspoons of freshly ground black pepper (grade 6)
 * Tablespoons of fresh lime juice (grade 7)
 * Cups of chopped cilantro (grade 8)
+
+In order to make all of the guacamole recipes at once, you need all of these
+ingredients in total.
+
+* 28.00 Ripe medium-size avocados; Haas recommended, if available
+* 3.50 Teaspoons of garlic powder
+* 3.50 Teaspoons of kosher salt
+* 3.50 Teaspoons of freshly ground black pepper
+* 7.00 Tablespoons of fresh lime juice
+* 1.75 Cups of chopped cilantro
