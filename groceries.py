@@ -1,4 +1,7 @@
 #!/usr/bin/env python2
+'''Here are some queries against the SupermarketAPI.
+I didn't wind up using them.'''
+
 import os
 from urllib import urlencode
 from urllib2 import urlopen
