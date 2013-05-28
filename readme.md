@@ -35,3 +35,6 @@ ingredients in total.
 * 3.50 Teaspoons of freshly ground black pepper
 * 7.00 Tablespoons of fresh lime juice
 * 1.75 Cups of chopped cilantro
+
+If that sounds like a bit too much guacamole, divide all of the quantities
+by some number greater than one.
