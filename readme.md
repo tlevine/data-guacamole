@@ -12,6 +12,8 @@ Then run the recipe-generator like so.
 
     ./gastronomify.r
 
+The results will go to [`data_guacamole.csv`](data_guacamole.csv).
+
 The resulting table tells you, in order, how much of the different ingredients
 to combine in the guacamole. Each ingredient represents the average test score
 for a particular grade, and each recipe represents a particular year. The
