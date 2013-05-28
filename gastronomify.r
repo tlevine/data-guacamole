@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 library(plyr)
+library(reshape2)
 
 # Inflate the variation
 inflate <- function(df, x) {
@@ -49,3 +50,4 @@ colnames(data.guacamole)[-1] <- paste(names(guacamole), ' (Grade ', grades, ')',
 print('Data-driven guacamole recipes')
 print('Each recipe represents the average tests scores by grade for a particular year.')
 print(round(data.guacamole, 2))
+write.csv(round(data.guacamole, 2), 'data_guacamole.csv', row.names = F)
