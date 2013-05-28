@@ -4,9 +4,9 @@ This is a gastronomification of
 [New York City math tests scores](https://data.cityofnewyork.us/Education/Math-Test-Results-2006-2012-District-All-Students/7yig-nj52),
 based on [this guacamole recipe](http://www.theyummylife.com/guacamole).
 
-Install `R` and then `plyr`.
+Install `R` and then `plyr` and `reshape2`.
 
-    R -e 'install.packages("plyr")'
+    R -e 'install.packages(c("plyr", "reshape2"))'
 
 Then run the recipe-generator like so.
 
