@@ -7,6 +7,17 @@ from lxml.etree import fromstring
 
 APIKEY = os.environ['SUPERMARKETAPI_APIKEY']
 
+def get_xml(url):
+    'Download a url and parse it to an XML tree.'
+    handle = urlopen(url)
+
+    # Remove the schema
+    text = handle.readline()
+    text += handle.readline().split(' ')[0] + '>\r\n'
+    text += handle.read()
+
+    return fromstring(text)
+
 def stores(state, city):
     'Get an array of stores for a given city.'
     params = urlencode({
@@ -15,25 +26,12 @@ def stores(state, city):
         'SelectedCity': city,
     })
     url = 'http://www.SupermarketAPI.com/api.asmx/StoresByCityState?' + params
-    handle = urlopen(url)
+    return get_xml(url)
 
-    # Remove the schema
-    text = handle.readline()
-    text += '<ArrayOfStore>\r\n'
-    handle.readline()
-    text += handle.read()
+def store_ids(state, city):
+    'Get a list of storeIds for a given city.'
+    return map(unicode, stores(state, city).xpath('//StoreId/text()'))
 
-    array_of_store = fromstring(text)
-    return array_of_store
-
-'''
-  <Store>
-    <Storename>Gristedes  </Storename>
-    <Address>251 W 86th St &amp; Broadway</Address>
-    <City>New York</City>
-    <State>NY</State>
-    <Zip>10024</Zip>
-    <Phone> </Phone>
-    <StoreId>fdbfe67a44</StoreId>
-  </Store>
-'''
+def search_for_item(store_id, item_name):
+    url = 'http://www.SupermarketAPI.com/api.asmx/SearchForItem?APIKEY=%s&StoreId=%s&ItemName=%s' % (APIKEY, store_id, item_name)
+    return get_xml(url)
